@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>R Chahana | Academic Portfolio</title>
+<meta name="description" content="Academic portfolio of R Chahana, Integrated MSc. Data Science student: research interests, education, projects, publications and CV.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600&family=Source+Serif+4:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f5fbff;--ink:#183a5b;--muted:#4f6d89;--accent:#7bb9e8;--accent-strong:#4b9ad1;--rule:#d9ebf8;--tint:#edf7ff}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:linear-gradient(180deg,#f8fcff 0%,#f3faff 100%);color:var(--ink);font:17px/1.65 "Source Sans 3",system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+a{color:var(--accent-strong);text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent-strong);outline-offset:3px}
+h1,h2,h3{font-family:"Source Serif 4",Georgia,"Times New Roman",serif;font-weight:600;line-height:1.25;margin:0}
+header{border-bottom:1px solid var(--rule);position:sticky;top:0;background:rgba(237,247,255,.96);backdrop-filter:blur(6px);z-index:5;box-shadow:0 1px 0 rgba(90,143,193,.08)}
+.bar{max-width:880px;margin:0 auto;padding:14px 24px;display:flex;flex-wrap:wrap;gap:8px 28px;align-items:baseline;justify-content:space-between}
+.brand{font-family:"Source Serif 4",Georgia,serif;font-size:1.15rem;font-weight:600;color:var(--ink)}
+nav{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:.95rem}
+nav a{color:var(--muted);padding:6px 10px;border-bottom:2px solid transparent;border-radius:8px 8px 0 0;transition:all .2s ease}
+nav a:hover{color:var(--ink);background:rgba(123,185,232,.08);text-decoration:none}
+nav a.on{color:var(--ink);border-bottom-color:var(--accent-strong);background:rgba(123,185,232,.12)}
+main{max-width:880px;margin:0 auto;padding:40px 24px 64px}
+.page{display:none}.page.on{display:block}
+h1{font-size:2.1rem;margin-bottom:6px}
+h2{font-size:1.6rem;margin-bottom:24px;padding-bottom:10px;border-bottom:1px solid var(--rule)}
+h3{font-size:1.1rem}
+.sub{color:var(--muted);margin:0 0 28px}
+.lead p{max-width:68ch}
+.tags{list-style:none;padding:0;margin:12px 0 0;display:flex;flex-wrap:wrap;gap:8px}
+.tags li{background:var(--tint);border:1px solid var(--rule);border-radius:6px;padding:4px 12px;font-size:.95rem;color:var(--ink)}
+.home{display:grid;grid-template-columns:260px 1fr;gap:48px;align-items:start}
+.side{position:sticky;top:88px}
+.photo{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:14px;border:1px solid var(--rule);background:var(--tint)}
+.ph{width:100%;aspect-ratio:1/1;border-radius:14px;border:1px solid var(--rule);background:var(--tint);display:none;align-items:center;justify-content:center;font:600 3rem "Source Serif 4",Georgia,serif;color:var(--muted)}
+.side h1{font-size:1.5rem;margin:20px 0 4px}
+.role{color:var(--muted);margin:0 0 14px}
+.contact{list-style:none;padding:0;margin:0;font-size:.97rem}
+.contact li{margin:6px 0;display:flex;gap:10px;align-items:center}
+.contact a{overflow-wrap:anywhere}
+.contact svg{width:17px;height:17px;flex:none;stroke:var(--muted);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.contact svg.solid{fill:var(--muted);stroke:none}
+.intro h2{border:0;padding:0;margin-bottom:16px;font-size:1.9rem}
+.item{display:grid;grid-template-columns:150px 1fr;gap:4px 24px;padding:0 0 22px;margin:0 0 22px;border-bottom:1px solid var(--rule)}
+.item.research-project{grid-template-columns:1fr}
+.item.publication-item{grid-template-columns:1fr}
+.item:last-child{border-bottom:0;margin-bottom:0}
+.when{color:var(--muted);font-size:.95rem}
+.item p{margin:4px 0 0}
+.meta{color:var(--muted);font-size:.95rem}
+.thesis-status{margin:4px 0 14px 12px!important;color:var(--muted);font-size:.9rem}
+.thesis-details{margin-left:12px;padding-left:16px;border-left:2px solid var(--rule)}
+.thesis-details h4{font-family:"Source Serif 4",Georgia,"Times New Roman",serif;font-size:1rem;font-weight:600;line-height:1.3;margin:16px 0 4px}
+.thesis-details h4:first-child{margin-top:0}
+.cert-list{list-style:none;padding:0;margin:0}
+.cert-list li{margin:0 0 14px;line-height:1.35}
+.cert-title{font-weight:600}
+.pub{margin:0 0 20px;padding-left:0;list-style:none}
+.pub li{margin-bottom:18px;max-width:72ch}
+.pub .t{font-weight:600}
+.btn{display:inline-block;border:1px solid var(--accent-strong);padding:8px 18px;border-radius:6px;font-weight:600;background:linear-gradient(180deg,#dff2ff 0%,#cfeaff 100%);color:var(--ink)}
+.btn:hover{background:linear-gradient(180deg,#78b8e7 0%,#4d9cd4 100%);color:#fff;text-decoration:none}
+footer{max-width:880px;margin:0 auto;padding:20px 24px 40px;border-top:1px solid var(--rule);color:var(--muted);font-size:.9rem}
+@media(max-width:760px){.home{grid-template-columns:1fr;gap:28px}.side{position:static;max-width:280px}}
+@media(max-width:620px){.item{grid-template-columns:1fr}h1{font-size:1.7rem}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header>
+  <div class="bar">
+    <a class="brand" href="#home">R Chahana</a>
+    <nav aria-label="Main">
+      <a href="#home">Home</a>
+      <a href="#education">Education</a>
+      <a href="#research">Research</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Work Experience</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#competitions">Achievements &amp; Activities</a>
+      <a href="#cv">CV</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section id="home" class="page">
+  <div class="home">
+    <aside class="side">
+      <img class="photo" src="photo.jpg" alt="Portrait of R Chahana" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="ph" aria-hidden="true">RC</div>
+      <h1>R Chahana</h1>
+      <p class="role">Integrated MSc. Data Science (Final Year)</p>
+      <ul class="contact">
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Amrita Vishwa Vidyapeetham, Coimbatore, India</li>
+<li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><a href="mailto:rchahanaeportfolio@gmail.com">rchahanaeportfolio@gmail.com</a></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 014 0v4M12 10v7"/></svg><a href="https://www.linkedin.com/in/chahana-ravikumar" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11.5V16c0 1.5 3 3 6 3s6-1.5 6-3v-4.5"/></svg><a href="https://scholar.google.com/citations?user=fpaS-b0AAAAJ&hl=en&oi=ao" target="_blank" rel="noopener">Google Scholar</a></li>
+        <li><svg class="solid" viewBox="0 0 24 24" aria-hidden="true"> fill="currentColor"><path d="M12 0.5C5.648 0.5 0.5 5.648 0.5 12c0 5.085 3.292 9.404 7.865 10.93.577.105.788-.25.788-.557 0-.274-.01-1.18-.016-2.13-3.204.697-3.881-1.54-3.881-1.54-.525-1.334-1.282-1.688-1.282-1.688-1.048-.716.079-.701.079-.701 1.158.081 1.767 1.188 1.767 1.188 1.031 1.768 2.706 1.257 3.365.962.105-.748.404-1.257.734-1.546-2.557-.291-5.246-1.279-5.246-5.686 0-1.255.448-2.28 1.183-3.083-.119-.29-.513-1.465.112-3.053 0 0 .965-.309 3.16 1.177a10.93 10.93 0 0 1 5.751 0c2.193-1.486 3.157-1.177 3.157-1.177.626 1.588.232 2.763.112 3.053.738.803 1.183 1.828 1.183 3.083 0 4.416-2.694 5.392-5.259 5.677.414.356.783 1.06.783 2.136 0 1.542-.013 2.788-.013 3.167 0 .308.208.666.794.553A11.518 11.518 0 0 0 23.5 12c0-6.352-5.148-11.5-11.5-11.5z"/></svg><a href="https://github.com/RChahana" target="_blank" rel="noopener">GitHub</a></li>
+        <li><svg class="solid" viewBox="0 0 512 512" aria-hidden="true"> fill="currentColor" stroke="none"><path d="M477.5 128C463 103.05 285.13 0 256.16 0S49.25 102.79 34.84 128s-14.49 230.8 0 256 192.38 128 221.32 128S463 409.08 477.49 384s14.51-231 .01-256zM316.13 414.22c-4 0-40.91-35.77-38-38.69.87-.87 6.26-1.48 17.55-1.83 0-26.23.59-68.59.94-86.32 0-2-.44-3.43-.44-5.85h-79.93c0 7.1-.46 36.2 1.37 72.88.23 4.54-1.58 6-5.74 5.94-10.13 0-20.27-.11-30.41-.08-4.1 0-5.87-1.53-5.74-6.11.92-33.44 3-84-.15-212.67v-3.17c-9.67-.35-16.38-1-17.26-1.84-2.92-2.92 34.54-38.69 38.49-38.69s41.17 35.78 38.27 38.69c-.87.87-7.9 1.49-16.77 1.84v3.16c-2.42 25.75-2 79.59-2.63 105.39h80.26c0-4.55.39-34.74-1.2-83.64-.1-3.39.95-5.17 4.21-5.2 11.07-.08 22.15-.13 33.23-.06 3.46 0 4.57 1.72 4.5 5.38C333 354.64 336 341.29 336 373.69c8.87.35 16.82 1 17.69 1.84 2.88 2.91-33.62 38.69-37.58 38.69z"/></svg><a href="https://www.hackerrank.com/profile/Chahana" target="_blank" rel="noopener">HackerRank</a></li>
+      </ul>
+    </aside>
+    <div class="intro">
+      <h2>Hello!</h2>
+      <p>I am Chahana, a final-year Integrated M.Sc. Data Science student at Amrita Vishwa Vidyapeetham, Coimbatore, with a strong foundation in probability, machine learning, statistics, linear algebra, image processing, and optimization. My research interests lie in the mathematical foundations of deep learning, statistical learning, and probabilistic methods, particularly in understanding the principles underlying learning algorithms and their generalization capabilities.</p>
+      <p>My research experience spans hybrid deep learning models, AutoML pipelines, explainable AI, and physics-informed neural networks applied to real-world problems across diverse domains. Through research projects, publications, internships and hackathons, I have strengthened my analytical thinking, experimental design, model evaluation, and problem-solving skills. I have also contributed to peer-reviewed publications and presented research at academic conferences. </p>
+      <p>I have strong programming skills in Python and hands-on experience with Numpy, Pandas, PyTorch, TensorFlow, and scikit-learn. I am seeking PhD and research assistant opportunities to deepen my theoretical understanding and contribute to developing reliable, generalizable, and impactful solutions to real-world problems.</p>
+      <h3 style="margin-top:28px">Areas of Interest</h3>
+      <ul class="tags">
+        <li>Machine Learning</li>
+        <li>Deep Learning</li>
+        <li>Optimization</li>
+        <li>Artificial Intelligence</li>
+        <li>Mathematics</li>
+        <li>Statistical Analysis</li>
+        <li>Image Processing</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="education" class="page">
+  <h2>Education</h2>
+  <div class="item">
+    <div class="when">Sep 2022 - Jun 2027 (Expected)</div>
+    <div>
+      <h3>Integrated M.Sc. in Data Science</h3>
+      <div class="meta">Amrita Vishwa Vidyapeetham, Coimbatore, India</div>
+      <ul style="margin:10px 0 0 18px; padding:0; list-style:disc;">
+        <li>CGPA: 8.91 / 10.0</li>
+        <li>Thesis Title: Benchmarking Unsupervised and Deep Learning Approaches for UAV Flood Segmentation, with Visual Question Answering for Disaster Assessment </li>
+        <li>Relevant Coursework: Machine Learning, Deep Learning, Natural Language Processing, Optimization, Image  Processing, Statistics</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="when">2022</div>
+    <div>
+      <h3>Higher Secondary Education (Grade 12)</h3>
+      <div class="meta">Gedee Public School, Coimbatore, Tamil Nadu, India</div>
+      <ul style="margin:10px 0 0 18px; padding:0; list-style:disc;">
+        <li>Board of Education: CBSE</li>
+        <li>Stream: Mathematics, Physics, Chemistry &amp; Computer Science</li>
+        <li>Percentage: 87.17%</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="when">2020</div>
+    <div>
+      <h3>Secondary School Education (Grade 10)</h3>
+      <div class="meta">Gedee Public School, Coimbatore, Tamil Nadu, India</div>
+      <ul style="margin:10px 0 0 18px; padding:0; list-style:disc;">
+        <li>Board of Education: CBSE</li>
+        <li>Percentage: 92.2%</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="research" class="page">
+  <h2 style="margin-top:28px;">Ongoing Research</h2>
+  <div class="item research-project">
+    <div>
+      <h3>Benchmarking Unsupervised and Deep Learning Approaches for UAV Flood Segmentation, with Visual Question Answering for Disaster Assessment</h3>
+      <p class="thesis-status"><em>Master's Thesis – Ongoing</em></p>
+      <div class="thesis-details">
+        <h4>Problem Statement</h4>
+        <p>Recent catastrophic events, such as the flooding in Nepal, highlight the need for rapid, accurate situational awareness during natural disasters. While Deep Learning (DL) models achieve high accuracy in flood segmentation, they depend on heavy computation, extensive data labeling, and often generalize poorly to unseen terrain. This research addresses the gap between high-accuracy but resource-intensive DL networks and the lightweight, training-free processing needed on Unmanned Aerial Vehicles (UAVs) to support immediate relief coordination, by benchmarking unsupervised and deep learning approaches to flood segmentation.</p>
+        <h4>Proposed Methodology</h4>
+        <ul>
+          <li>Expand the <a href="https://doi.org/10.3390/rs16122126" target="_blank" rel="noopener">baseline unsupervised approach</a> beyond binary flood segmentation to multi-class segmentation, specifically isolating flooded buildings and roads, addressing a key gap highlighted in the literature.</li>
+          <li>Benchmark against UNet, SegNet, and DeepLabV3+ (EfficientNet/ResNet backbones) in PyTorch, using F1, IoU/Dice, boundary metrics, parameter counts, and inference time.</li>
+          <li>Evaluate generalization and multi-class performance on the independent <a href="https://www.kaggle.com/datasets/cpanag/aifloodsense" target="_blank" rel="noopener">AIFloodSense</a> multi-class aerial flood dataset.</li>
+        </ul>
+        <h4>Expected Outcomes</h4>
+        <ul>
+          <li>A reproducible benchmark showing when an unsupervised pipeline is sufficient and when deep learning is worth its computational cost.</li>
+          <li>An extended unsupervised pipeline aiming to narrow the accuracy gap with minimal compute.</li>
+          <li>A Visual Question Answering (VQA) layer so responders can ask questions such as “Which roads are flooded?” in natural language.</li>
+        </ul>
+        <h4>Timeline</h4>
+        <ul style="list-style:none; padding-left:0;">
+          <li>✅ Literature review and baseline reproduction</li>
+          <li>🔄 Adaptive and multi-class extension</li>
+          <li>⏳ DL benchmarking</li>
+          <li>⏳ Cross-dataset validation and thesis defense</li>
+          <li>⏳ VQA integration</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="item research-project">
+    <div>
+      <h3>A Stacked Ensemble Framework for Multilingual Hope Speech Detection in Low-Resource Dravidian Languages</h3>
+      <p>Thilaga M, <strong>R Chahana</strong>, Gayathre V, Aarthi S, Latha E, Jayasri NV</p>
+      <p><em>Manuscript in preparation; planned for journal submission</em></p>
+      <ul>
+        <li>Developed a stacked ensemble combining XLM-RoBERTa, mBERT, ELECTRA, and BiGRU with GloVe embeddings, using XGBoost as the meta-learner.</li>
+        <li>Addressed severe class imbalance through back-translation-based data augmentation and ensemble-guided filtering of synthetic samples.</li>
+        <li>Extended the framework to low-resource Tamil through cross-lingual transfer learning and incorporated LIME for model interpretability.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 style="margin-top:28px;">Publications</h2>
+  <div class="item publication-item">
+    <div>
+      <h3>Advancing Android Ransomware Detection with Hybrid AutoML and Ensemble Learning Approaches</h3>
+      <p>Kirubavathi Ganapathiyappan, <strong>Chahana Ravikumar</strong>, Raghul Alagunachimuthu Ranganayaki, Ayman Altameem, Ateeq Ur Rehman, Ahmad Almogren</p>
+      <p><em>Computers, Materials &amp; Continua (Tech Science Press, Scopus Q1, CiteScore: 6.6)</em>, 87(1), Article 27, 2026 <a href="https://www.techscience.com/cmc/v87n1/66040" target="_blank" rel="noopener">(link)</a></p>
+    </div>
+  </div>
+  <div class="item publication-item">
+    <div>
+      <h3>An AI-Based Attention-Enhanced BERT and BiGRU Hybrid Model for Twitter Sentiment Analysis</h3>
+      <p>Venkateswaran Radhakrishnan, <strong>R Chahana</strong>, Aarthi S, Kirubavathi G</p>
+      <p><em>Proceedings of the 2026 International Conference on Computational Intelligence Systems and Devices (ICCISD)</em>, IEEE, Sharda University, 2026 <a href="https://ieeexplore.ieee.org/document/11731893" target="_blank" rel="noopener">(link)</a></p>
+    </div>
+  </div>
+
+  <h2 style="margin-top:28px;">Accepted Conference Papers &amp; Presentations</h2>
+
+  <div class="item publication-item">
+    <div>
+      <h3>Sentiment Analysis in Finbert for Stock Market Text Data using Global News Data</h3>
+      <p><strong>R Chahana</strong>, M.S. Anjali, Jayasri N.V, Nimisha R, Krishna Priya G</p>
+      <p>Presented at the 16th International Conference on Cloud Computing, Data Science &amp; Engineering (CONFLUENCE), Amity University, 2026 (Forthcoming Springer Proceedings)</p>
+      <p><a href="https://drive.google.com/file/d/1VGB-bRzrS5VrjCAoLtpeShDmPAKnaY49/view?usp=sharing" target="_blank" rel="noopener">Presentation Certificate</a></p>
+    </div>
+  </div>
+
+  <div class="item publication-item">
+    <div>
+      <h3>Enhanced Stock Prediction Using a Hybrid LSTM-CNN Algorithm and Explainable AI with YFinance Data</h3>
+      <p>M.S. Anjali, <strong>R Chahana</strong>, Jayasri N.V, Nimisha R, Krishna Priya G</p>
+      <p>Presented at the International Conference on Trusted Networks and Intelligent Systems (Trustnet), Manipal University Jaipur, 2026 (Forthcoming Springer Proceedings)</p>
+      <p><a href="https://drive.google.com/file/d/1HTd1iViot1lrMywMsT9R59cnXJ6RKVuM/view?usp=sharing" target="_blank" rel="noopener">Presentation Certificate</a> (Presented by Co-Author)</p>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="page">
+  <h2>Projects</h2>
+  <div class="item">
+    <div class="when">May 2026</div>
+    <div><h3>Physics-Informed Neural Networks for State-to-State Learning of Nonlinear Stress Evolution in Cyclic Plasticity</h3>
+    <p>Developed a state-to-state PINN that learns the one-step evolution of replacement stress in cyclic plasticity without time integration at inference. Formulated training losses using ODE residuals, multi-step rollouts, and initial conditions, with Adam and L-BFGS optimization. Validated against a Runge–Kutta reference, reaching 0.4 MPa RMSE (0.085 MPa MAE).</p>
+    <p><strong>Tech Stack:</strong>Python, PyTorch, Adam, L-BFGS, NumPy, Matplotlib</p></div>
+  </div>
+  <div class="item">
+    <div class="when">Apr 2026</div>
+    <div><h3>AI Web Agent for Context-Aware Website Assistance</h3>
+    <div class="meta">Amrita Vishwa Vidyapeetham | Natural Language Processing</div>
+    <p>Built an AI-powered web agent that interprets website structure and gives step-by-step task guidance across platforms. Developed a FastAPI backend that processes DOM-based page context and generates LLM-driven instructions, a Chrome extension for live data extraction and UI overlays, and a CLI for multi-turn conversational navigation.</p>
+    <p><strong>Tech Stack:</strong> Python, FastAPI, Playwright, BeautifulSoup, JavaScript, Chrome Extension APIs, Groq (LLaMA 3.3)</p></div>
+  </div>
+  <div class="item">
+    <div class="when">Mar 2026</div>
+    <div><h3>Smart Email Assistant with Conversational AI Agent</h3>
+    <div class="meta">Amrita Vishwa Vidyapeetham | Large Language Models</div>
+    <p>Developed a 24/7 AI email assistant for inbox categorization, scheduling, and automated reply generation. Added voice-based email and calendar queries via Whisper, entity extraction for automatic event creation, and WhatsApp notifications through Twilio for weekly summaries and deadlines.</p>
+    <p><strong>Tech Stack:</strong> Python, Flask, Gmail API, Google Calendar API, Whisper, Groq (LLaMA 3.3), Mistral, Twilio, SQLite</p></div>
+  </div>
+  <div class="item">
+    <div class="when">Nov 2025 – Mar 2026</div>
+    <div><h3>Advancing Multi-Day Weather Forecasting using Temporal Deep Learning Networks (Mini Project)</h3>
+    <div class="meta">Amrita Vishwa Vidyapeetham | Deep Learning</div>
+    <p>Developed a hybrid GA-ConvLSTM framework to forecast temperature, humidity, dew point, and wind speed using 15 years of meteorological data. Combined CNN-based spatial feature extraction with LSTM-based temporal modeling and transfer learning for multi-city adaptation, achieving an R² of 0.971 for Chennai and above 0.98 for other cities. Used Genetic Algorithms to optimize key hyperparameters and improve generalization across climatic datasets.</p>
+    <p><strong>Tech Stack:</strong> Python, TensorFlow, Genetic Algorithms, Transfer Learning, Scikit-learn, Matplotlib</p></div>
+  </div>
+  <div class="item">
+    <div class="when">Jan 2026 – Apr 2026</div>
+    <div><h3>IoT-Enabled Framework for Real-Time Fire Alarm Classification Using SMOTE-Enhanced ML and DNN</h3>
+    <div class="meta">Amrita Vishwa Vidyapeetham | Machine Learning, Internet of Things</div>
+    <p>Built an end-to-end ML pipeline for IoT fire detection on a dataset of 62k+ multi-sensor readings. Used SMOTE for class imbalance and Random Forest for feature selection, reaching 99.99% accuracy with Random Forest and a deep MLP (batch normalization and dropout).</p>
+    <p><strong>Tech Stack:</strong> Python, Scikit-learn, TensorFlow/Keras, SMOTE, Random Forest, MLP</p></div>
+  </div>
+  <div class="item">
+    <div class="when">Jul 2025 – Oct 2025</div>
+    <div><h3>Autonomous Lunar Lander using Deep Reinforcement Learning</h3>
+    <div class="meta">Amrita Vishwa Vidyapeetham | Deep Reinforcement Learning</div>
+    <p>Developed a Deep Q-Network (DQN) agent for autonomous lunar landing on procedurally generated uneven terrain. Designed a custom Box2D physics environment with an 8-dimensional state space and 4 discrete control actions, and implemented experience replay and target networks to stabilize training and improve convergence. Achieved stable convergence after 1,500 episodes with an average reward of 339.49.</p>
+    <p><strong>Tech Stack:</strong> Python, DQN, Gymnasium, Box2D</p>
+    </div>
+  </div>
+  <div class="item">
+    <div class="when">March 2025</div>
+    <div><h3>Fatty Liver Disease Detection from Ultrasound Images using ML/DL</h3>
+    <div class="meta">Amrita Vishwa Vidyapeetham | Deep Learning, Medical Image Analysis, Data Visualization</div>
+    <p>Developed deep learning and classical machine learning models to detect fatty liver disease from ultrasound images. Performed image preprocessing and exploratory analysis using normalization, PCA, and t-SNE. Implemented CNN models with TensorFlow/Keras and baseline classifiers (Random Forest, Logistic Regression, and Decision Tree), achieving 82% classification accuracy on the test dataset.</p>
+    <p><strong>Tech Stack:</strong> Python, TensorFlow, Keras, Scikit-learn, OpenCV</p>
+    </div>
+  </div>
+</section>
+
+<section id="experience" class="page">
+  <h2>Work Experience</h2>
+  <div class="item">
+    <div class="when">Jun 2026 – Present</div>
+    <div>
+      <h3>Upnex Solutions</h3>
+      <div class="meta"><em>AI Automation Intern | Remote (United States)</em></div>
+      <p><strong>Objective:</strong> Developing an AI-powered Maintenance Follow-up Agent for US property management by automating vendor assignment, maintenance follow-ups, workflow tracking, and status updates through integration with Buildium and LeadSimple.</p>
+      <p><strong>Tools and Techniques:</strong> Python, n8n, REST APIs, Buildium API, LeadSimple API, Postman, Large Language Models (LLMs), API integration, workflow automation, HTTP requests, JSON, prompt engineering.</p>
+      <p><strong>Outcome:</strong> Building intelligent automation workflows to streamline maintenance operations, automate vendor communication, reduce manual intervention, and improve operational efficiency through AI-driven workflow automation.</p>
+    </div>
+  </div>
+  <div class="item">
+    <div class="when">Apr 2025 – Jun 2025</div>
+    <div>
+      <h3>Kambaa Incorporation</h3>
+      <div class="meta"><em>AI Developer Intern | Peelamedu, Coimbatore, India</em></div>
+      <p><strong>Objective:</strong> Developed a Personal AI Assistant with automated MS Teams meeting notes, email draft generation, and voice-based event scheduling in Outlook and Gmail Calendar.</p>
+      <p><strong>Tools and Techniques:</strong> Python, Django, Postman, Whisper AI, Whisper flow, API integration (OAuth, API keys, tokens), Large Language Models (LLMs), Model Context Protocol (MCP).</p>
+      <p><strong>Outcome:</strong> Delivered a working AI Assistant prototype with secure API integration and contextual LLM interactions, gaining hands-on experience in real-world AI product development.</p>
+    </div>
+  </div>
+  <div class="item">
+    <div class="when">Jun 2024 – Jul 2024</div>
+    <div>
+      <h3>Larsen &amp; Toubro Limited</h3>
+      <div class="meta"><em>Data Science Intern | Malumichampatti, Coimbatore, India</em></div>
+      <p><strong>Objective:</strong> Gained hands-on experience in data analysis, visualization, and process automation.</p>
+      <p><strong>Tools and Techniques:</strong> Power BI, Robotic Process Automation (RPA), UiPath automation, web scraping.</p>
+      <p><strong>Outcome:</strong> Received positive feedback for the dashboard’s user-friendly interface and detailed financial insights, leading to adoption by 85% of the IT department.</p>
+    </div>
+  </div>
+</section>
+
+<section id="certifications" class="page">
+  <h2>Certifications</h2>
+  <ul class="cert-list">
+    <li>
+      <span class="cert-title">Data Analytics with Excel</span> |
+      <a href="https://drive.google.com/file/d/1Whh1Grgt9dPttL4SEzd-3EWlagn68nu5/view?usp=sharing" target="_blank" rel="noopener">Certificate</a><br>
+      CIR, Amrita
+    </li>
+    <li>
+      <span class="cert-title">Fundamental Algorithm Design and Analysis</span> |
+      <a href="https://drive.google.com/file/d/14-AHa51krghb9eVLUou9DgRECaeoJ3HZ/view?usp=sharing" target="_blank" rel="noopener">Elite Certificate</a><br>
+      NPTEL
+    </li>
+    <li>
+      <span class="cert-title">AI/ML for Geodata Analysis</span> |
+      <a href="https://drive.google.com/file/d/1GrPfntHDwyDxlHS-_G0mUwCD4k-6IaaH/view?usp=sharing" target="_blank" rel="noopener">Certificate</a><br>
+      IIRS, ISRO
+    </li>
+    <li>
+      <span class="cert-title">LIDAR Data Processing and Applications</span> |
+      <a href="https://drive.google.com/file/d/1QZxNRhcl_Td-oUxTdSZ0g7HisrBFHqOf/view?usp=sharing" target="_blank" rel="noopener">Certificate</a><br>
+      IIRS, ISRO
+    </li>
+    <li>
+      <span class="cert-title">Developing LLM Applications with LangChain</span> |
+      <a href="https://drive.google.com/file/d/1XoMFUKPlqXcpvKFz_yBZPkGrtU4sxOB1/view?usp=sharing" target="_blank" rel="noopener">Certificate</a><br>
+      Zero To Mastery
+    </li>
+    <li>
+      <span class="cert-title">Introduction to Data Science</span> |
+      <a href="https://drive.google.com/file/d/1SFuYM8W3iplPMj_XpkECggGKy9xCX_gB/view?usp=sharing" target="_blank" rel="noopener">Certificate</a><br>
+      Infosys Springboard
+    </li>
+    <li>
+      <span class="cert-title">Introduction to Deep Learning</span> |
+      <a href="https://drive.google.com/file/d/1jYYnoVhnoa5YCrxvPLNsCHHBeLgmOEVV/view?usp=sharing" target="_blank" rel="noopener">Certificate</a><br>
+      Infosys Springboard
+    </li>
+    <li>
+      <span class="cert-title">Introduction to Artificial Intelligence</span> |
+      <a href="https://drive.google.com/file/d/1yz-pmIz3qKXCpU3eH7_k5I4SVZN9ldRB/view?usp=sharing" target="_blank" rel="noopener">Certificate</a><br>
+      Infosys Springboard
+    </li>
+    <li>
+      <span class="cert-title">Introduction to Natural Language Processing</span> |
+      <a href="https://drive.google.com/file/d/1RyrdKVxk89HHJZyZu97UaeCGQk0p9Zsn/view?usp=sharing" target="_blank" rel="noopener">Certificate</a><br>
+      Infosys Springboard
+    </li>
+  </ul>
+</section>
+
+<section id="competitions" class="page">
+  <h2>Achievements</h2>
+  <div class="item">
+    <div class="when">Sep 2025</div>
+    <div><h3>Smart India Internal Hackathon 2025 </h3>
+    <div class="meta">Amrita University,Coimbatore | Shortlisted</div>
+    <p>Ranked in the Top 30 out of 321 teams.</p></div>
+  </div>
+  <div class="item">
+    <div class="when">Mar 2024</div>
+    <div><h3>Hacktrix 2.0 Hackathon (Generative AI)</h3>
+    <div class="meta">Sri Krishna College of Technology, Coimbatore | <a href="https://drive.google.com/file/d/1NTr6YIu_Ev6emDAcZmGohZDDrm5Ib0RL/view?usp=sharing" target="_blank" rel="noopener">Certificate of Participation</a></div>
+    <p><a href="https://drive.google.com/file/d/1W0sfEqetyWKp3uP14fqVbqP5S3K17amL/view?usp=sharing" target="_blank" rel="noopener">Finalist</a> among the top 10 teams.</p></div>
+  </div>
+  <h2>Activities</h2>
+  <div class="item">
+    <div class="when">Oct 2026</div>
+    <div>
+      <h3>“Don’t Miss a Beat” — CPR Awareness Initiative</h3>
+      <div class="meta"><em>Sri Ramakrishna Hospital &amp; First Heart Foundation</em><br><a href="https://drive.google.com/file/d/1F_swgwtrdQS-j0KFw_P0973zwmqhsOmf/view?usp=sharing" target="_blank" rel="noopener">Certificate of Appreciation</a></div>
+    </div>
+  </div>
+  <div class="item">
+    <div class="when">Apr 2023</div>
+    <div>
+      <h3>Emerging Data Science Technologies &amp; Industry 5.0 (Workshop, Attendee)</h3>
+      <div class="meta"><em>Amrita Vishwa Vidyapeetham, Coimbatore | Anokha 2023 National-Level Techfest</em></div>
+      <p><a href="https://drive.google.com/file/d/1r9FbwFIkb8g72BHhdaIKyVo-Hgzej8XR/view?usp=sharing" target="_blank" rel="noopener">Certificate of Participation</a></p>
+    </div>
+  </div>
+</section>
+
+<section id="cv" class="page">
+  <h2>Resume / CV</h2>
+  <p>My CV is available as a PDF.</p>
+  <p><a class="btn" href="cv.pdf" target="_blank" rel="noopener">Open CV (PDF)</a></p>
+</section>
+
+</main>
+
+<footer>
+  &copy; <span id="yr"></span> R Chahana. 
+</footer>
+
+<script>
+(function(){
+  var pages=document.querySelectorAll('.page'),
+      links=document.querySelectorAll('nav a, a.brand');
+  function show(id){
+    if(!document.getElementById(id))id='home';
+    pages.forEach(function(p){p.classList.toggle('on',p.id===id)});
+    document.querySelectorAll('nav a').forEach(function(a){
+      a.classList.toggle('on',a.getAttribute('href')==='#'+id);
+    });
+    window.scrollTo(0,0);
+  }
+  function current(){
+    try{return (location.hash||'#home').slice(1)}catch(e){return 'home'}
+  }
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var id=a.getAttribute('href').slice(1);
+      e.preventDefault();
+      show(id);
+      try{history.replaceState(null,'','#'+id)}catch(err){}
+    });
+  });
+  window.addEventListener('hashchange',function(){show(current())});
+  show(current());
+  document.getElementById('yr').textContent=new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
